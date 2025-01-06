@@ -1,7 +1,7 @@
-export { LoginForm } from './ui/LoginForm/LoginForm'
-export { RegisterForm } from './ui/RegisterForm/RegisterForm'
+export { default as LoginForm } from './ui/LoginForm/LoginForm'
+export { default as RegisterForm } from './ui/RegisterForm/RegisterForm'
 
 export { handleLogin, handleRegister, logout } from './api/authApi'
 
-export type { loginData, registerData } from './intefaces/auth.type'
-export type { IUser } from './intefaces/user.type'
+export type { loginData, registerData } from './interfaces/auth.type'
+export type { IUser } from './interfaces/user.type'

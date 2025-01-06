@@ -9,6 +9,8 @@
 	--warning_border: #975102;
 	--success: #14ae5c;
 	--success_border: #009951;
+
+	--nav_height: 80px;
 }
 
 *:hover {
@@ -70,10 +72,17 @@ a {
 svg {
 	width: 24px;
 	height: 24px;
+	background: transparent;
 }
 
 button {
 	border: none;
+	cursor: pointer;
+	padding: 0.75rem 1rem;
+	margin: 0.5rem 0;
+	border-radius: 0.5rem;
+	display: flex;
+	align-items: center;
 }
 
 .primary {
@@ -88,4 +97,13 @@ button {
 
 .subtle {
 	background-color: transparent;
+	padding: 0;
+	margin: 0;
+	border-radius: 50%;
+	padding: 0.5rem;
+	aspect-ratio: 1/1;
+}
+
+.subtle:hover {
+	background-color: #ffffff19;
 }

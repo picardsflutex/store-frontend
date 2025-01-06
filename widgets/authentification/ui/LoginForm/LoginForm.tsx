@@ -3,6 +3,7 @@
 import { Button, LabeledInput } from '@/shared'
 import useUserStore from '@/stores/user/user'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useActionState } from 'react'
 import { handleLogin, IUser } from '../..'
 import styles from './styles.module.css'
@@ -12,7 +13,8 @@ interface SubmitState {
 	error: Error | null
 }
 
-export const LoginForm = () => {
+export default function LoginForm() {
+	const router = useRouter()
 	const setUser = useUserStore(state => state.setUser)
 
 	const handleSubmit = async (prevState: SubmitState, formData: FormData) => {
@@ -26,6 +28,7 @@ export const LoginForm = () => {
 
 			const data = await handleLogin({ email, password })
 			setUser(data.data)
+			router.push('/')
 			return { data, error: null }
 		} catch (error: any) {
 			return { ...prevState, error }

@@ -3,7 +3,7 @@
 import classNames from 'classnames'
 import { useState } from 'react'
 import { BiHide, BiShow } from 'react-icons/bi'
-import { Input } from '..'
+import { Button, Input } from '..'
 import { LabeledInputProps } from './LabeledInputProps.type'
 import styles from './styles.module.css'
 
@@ -32,13 +32,14 @@ const LabeledInput = ({
 			</label>
 			{errors && <span className={styles.inputError}>{errors}</span>}
 			{type === 'password' && (
-				<button
+				<Button
+					buttonStyle='subtle'
 					type='button'
 					onClick={() => setShowPassword(!showPassword)}
 					className={styles.hideButton}
 				>
 					{!showPassword ? <BiHide /> : <BiShow />}
-				</button>
+				</Button>
 			)}
 		</div>
 	)

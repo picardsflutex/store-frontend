@@ -9,6 +9,7 @@
 	left: 1rem;
 }
 
+.input:autofill + .inputLabel,
 .input:focus + .inputLabel,
 .input:valid + .inputLabel {
 	top: 0rem;
@@ -17,7 +18,7 @@
 
 .hideButton {
 	position: absolute;
-	top: 1.25rem;
+	top: 0.75rem;
 	right: 1rem;
 }
 

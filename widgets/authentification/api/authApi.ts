@@ -1,7 +1,7 @@
 'use client'
 
 import { axiosPublic } from '@/axios'
-import { loginData, registerData } from '../intefaces/auth.type'
+import { loginData, registerData } from '../interfaces/auth.type'
 
 export const handleRegister = async ({
 	password,

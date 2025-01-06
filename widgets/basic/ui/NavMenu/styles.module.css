@@ -1,0 +1,21 @@
+.navMenu {
+	height: var(--nav_height);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.navMenuPart {
+	display: flex;
+	align-items: center;
+}
+
+.navMenuPart * {
+	margin: 0 0.5rem;
+}
+
+.profileIcon {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}

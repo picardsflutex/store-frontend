@@ -1,5 +1,5 @@
+import { NavMenu } from '@/widgets/basic'
 import type { Metadata } from 'next'
-import './globals.css'
 
 export const metadata: Metadata = {
 	title: 'Create Next App',
@@ -11,5 +11,10 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode
 }>) {
-	return <main>{children}</main>
+	return (
+		<main>
+			<NavMenu />
+			{children}
+		</main>
+	)
 }
