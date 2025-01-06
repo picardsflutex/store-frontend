@@ -1,0 +1,16 @@
+.registerForm {
+	width: clamp(250px, 40%, 600px);
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.namesInputGroup {
+	display: flex;
+	justify-content: space-between;
+}
+
+.namesInput {
+	width: 45%;
+}
