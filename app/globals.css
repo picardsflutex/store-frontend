@@ -8,12 +8,12 @@
 	--warning: #e8b931;
 	--warning_border: #975102;
 	--success: #14ae5c;
-	--success_border: #009951;
+	--success_border: #00582f;
 
 	--nav_height: 80px;
 }
 
-*:hover {
+button:hover {
 	--danger: #c00f0c;
 	--danger_border: #900b09;
 	--warning: #e5a000;
@@ -41,6 +41,14 @@ html {
 	font-family: 'Montserrat', serif;
 	font-optical-sizing: auto;
 	font-size: 1rem;
+}
+
+h1 {
+	font-size: 1.25rem;
+}
+
+h3 {
+	font-size: 0.75rem;
 }
 
 input:-webkit-autofill,
@@ -98,6 +106,11 @@ button {
 .neutral {
 	background-color: transparent;
 	border: 2px solid var(--background);
+}
+
+.success {
+	color: var(--foreground);
+	background-color: var(--success);
 }
 
 .subtle {

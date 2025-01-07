@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
 interface CartItem {
-	id: number
+	item_id: number
 	quantity: number
 }
 
@@ -21,20 +21,22 @@ const useCartStore = create<CartState>()(
 			changeValueCart: (itemId: number, quantity: number) =>
 				set((state: CartState) => {
 					const existingItem = state.cart.find(
-						cartItem => cartItem.id === itemId
+						cartItem => cartItem.item_id === itemId
 					)
 
 					if (existingItem) {
 						const newQuantity = existingItem.quantity + quantity
 						if (newQuantity <= 0) {
 							return {
-								cart: state.cart.filter(cartItem => cartItem.id !== itemId),
+								cart: state.cart.filter(
+									cartItem => cartItem.item_id !== itemId
+								),
 							}
 						}
 
 						return {
 							cart: state.cart.map(cartItem =>
-								cartItem.id === itemId
+								cartItem.item_id === itemId
 									? { ...cartItem, quantity: newQuantity }
 									: cartItem
 							),
@@ -42,24 +44,24 @@ const useCartStore = create<CartState>()(
 					} else {
 						if (quantity <= 0) return state
 						return {
-							cart: [...state.cart, { id: itemId, quantity }],
+							cart: [...state.cart, { item_id: itemId, quantity }],
 						}
 					}
 				}),
 			removeFromCart: (itemId: number) =>
 				set((state: CartState) => ({
-					cart: state.cart.filter(cartItem => cartItem.id !== itemId),
+					cart: state.cart.filter(cartItem => cartItem.item_id !== itemId),
 				})),
 			updateQuantity: (itemId: number, quantity: number) =>
 				set((state: CartState) => {
 					if (quantity <= 0) {
 						return {
-							cart: state.cart.filter(cartItem => cartItem.id !== itemId),
+							cart: state.cart.filter(cartItem => cartItem.item_id !== itemId),
 						}
 					}
 					return {
 						cart: state.cart.map(cartItem =>
-							cartItem.id === itemId ? { ...cartItem, quantity } : cartItem
+							cartItem.item_id === itemId ? { ...cartItem, quantity } : cartItem
 						),
 					}
 				}),

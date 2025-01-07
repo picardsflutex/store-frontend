@@ -8,9 +8,10 @@ import { FaCartShopping, FaRegTrashCan } from 'react-icons/fa6'
 import { IoClose } from 'react-icons/io5'
 import styles from './styles.module.css'
 
-interface ItemDetails {
+export interface ItemDetails {
 	id: number
 	name: string
+	description: string
 	price: number
 }
 
@@ -29,10 +30,13 @@ export const Cart = () => {
 			const fetchedDetails: Record<number, ItemDetails> = {}
 			await Promise.all(
 				cart.map(async item => {
-					const response = await axiosPublic.get(`/api/v1/items/${item.id}`)
+					const response = await axiosPublic.get(
+						`/api/v1/items/${item.item_id}`
+					)
 					const data = response.data
-					fetchedDetails[item.id] = {
+					fetchedDetails[item.item_id] = {
 						id: data.id,
+						description: data.description,
 						name: data.name,
 						price: data.price,
 					}
@@ -62,18 +66,18 @@ export const Cart = () => {
 					) : (
 						<ul className={styles.itemList}>
 							{cart.map(item => {
-								const details = itemsDetails[item.id]
+								const details = itemsDetails[item.item_id]
 								if (!details) return null
 								const currentQuantity = item.quantity
 								const total = details.price * currentQuantity
 
 								return (
-									<li key={item.id} className={styles.cartItem}>
+									<li key={item.item_id} className={styles.cartItem}>
 										<div className={styles.itemDetails}>
 											<div>{details.name}</div>
 										</div>
 										<div className={styles.itemDetails}>
-											<Counter id={item.id} />
+											<Counter id={item.item_id} />
 											<div className={styles.itemSum}>
 												Сумма: ${total.toFixed(2)}
 											</div>

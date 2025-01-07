@@ -10,7 +10,7 @@ const Counter = ({ id }: { id: number }) => {
 			updateQuantity(id, newQuantity)
 		}
 	}
-	const currentQuantity = cart.find(item => item.id === id)?.quantity || 0
+	const currentQuantity = cart.find(item => item.item_id === id)?.quantity || 0
 
 	return (
 		<div className={styles.counterContainer}>
