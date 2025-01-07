@@ -8,7 +8,7 @@ interface CartItem {
 
 interface CartState {
 	cart: CartItem[]
-	addToCart: (itemId: number, quantity?: number) => void
+	changeValueCart: (itemId: number, quantity: number) => void
 	removeFromCart: (itemId: number) => void
 	updateQuantity: (itemId: number, quantity: number) => void
 	clearCart: () => void
@@ -18,20 +18,29 @@ const useCartStore = create<CartState>()(
 	persist(
 		set => ({
 			cart: [],
-			addToCart: (itemId: number, quantity = 1) =>
+			changeValueCart: (itemId: number, quantity: number) =>
 				set((state: CartState) => {
 					const existingItem = state.cart.find(
 						cartItem => cartItem.id === itemId
 					)
+
 					if (existingItem) {
+						const newQuantity = existingItem.quantity + quantity
+						if (newQuantity <= 0) {
+							return {
+								cart: state.cart.filter(cartItem => cartItem.id !== itemId),
+							}
+						}
+
 						return {
 							cart: state.cart.map(cartItem =>
 								cartItem.id === itemId
-									? { ...cartItem, quantity: cartItem.quantity + quantity }
+									? { ...cartItem, quantity: newQuantity }
 									: cartItem
 							),
 						}
 					} else {
+						if (quantity <= 0) return state
 						return {
 							cart: [...state.cart, { id: itemId, quantity }],
 						}
@@ -42,11 +51,18 @@ const useCartStore = create<CartState>()(
 					cart: state.cart.filter(cartItem => cartItem.id !== itemId),
 				})),
 			updateQuantity: (itemId: number, quantity: number) =>
-				set((state: CartState) => ({
-					cart: state.cart.map(cartItem =>
-						cartItem.id === itemId ? { ...cartItem, quantity } : cartItem
-					),
-				})),
+				set((state: CartState) => {
+					if (quantity <= 0) {
+						return {
+							cart: state.cart.filter(cartItem => cartItem.id !== itemId),
+						}
+					}
+					return {
+						cart: state.cart.map(cartItem =>
+							cartItem.id === itemId ? { ...cartItem, quantity } : cartItem
+						),
+					}
+				}),
 			clearCart: () => set({ cart: [] }),
 		}),
 		{

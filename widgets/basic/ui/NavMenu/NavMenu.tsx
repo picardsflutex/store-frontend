@@ -1,12 +1,13 @@
 'use client'
 
+import { Cart } from '@/features/cart'
 import { ROUTES } from '@/routes/routes'
 import { Button } from '@/shared'
 import useUserStore from '@/stores/user/user'
 import { logout } from '@/widgets/authentification'
 import Link from 'next/link'
-import { TiUser } from 'react-icons/ti'
 import { RiLogoutBoxRLine } from 'react-icons/ri'
+import { TiUser } from 'react-icons/ti'
 import styles from './styles.module.css'
 
 export const NavMenu = () => {
@@ -33,6 +34,7 @@ export const NavMenu = () => {
 					<TiUser />
 					{user?.first_name}
 				</Link>
+				<Cart />
 				<Button buttonStyle='subtle' onClick={handleLogout}>
 					<RiLogoutBoxRLine />
 				</Button>

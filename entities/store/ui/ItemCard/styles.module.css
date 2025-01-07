@@ -1,0 +1,14 @@
+.itemCard {
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem;
+	border-radius: 1rem;
+	border: 2px solid var(--foreground);
+	margin: 1rem 0;
+}
+
+.infoSection {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}

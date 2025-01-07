@@ -70,8 +70,8 @@ a {
 }
 
 svg {
-	width: 24px;
-	height: 24px;
+	height: 1rem;
+	width: 1rem;
 	background: transparent;
 }
 
@@ -88,6 +88,11 @@ button {
 .primary {
 	color: var(--background);
 	background-color: var(--foreground);
+}
+
+.primary svg {
+	fill: var(--background);
+	margin-right: 0.25rem;
 }
 
 .neutral {

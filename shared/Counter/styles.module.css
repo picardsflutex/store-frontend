@@ -1,0 +1,32 @@
+.counterContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.cartCounter::-webkit-outer-spin-button,
+.cartCounter::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	-moz-appearance: textfield;
+	margin: 0;
+}
+
+.cartCounter {
+	width: 2rem;
+	aspect-ratio: 1 / 1;
+	text-align: center;
+	border-radius: 0.5rem;
+	border: 2px solid var(--foreground);
+	margin: 0 0.25rem;
+}
+
+.cartChangeButton {
+	padding: 0;
+	aspect-ratio: 1/1;
+	font-size: 2rem;
+	border-radius: 50%;
+}
+
+.cartChangeButton svg {
+	height: 1rem;
+}
