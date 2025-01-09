@@ -1,4 +1,5 @@
 export { default as LoginForm } from './ui/LoginForm/LoginForm'
+export { default as ProfileInfo } from './ui/ProfileInfo/ProfileInfo'
 export { default as RegisterForm } from './ui/RegisterForm/RegisterForm'
 
 export { handleLogin, handleRegister, logout } from './api/authApi'

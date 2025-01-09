@@ -1,0 +1,14 @@
+.manageMenu {
+	width: clamp(250px 80%, 800px);
+}
+
+.manageMenuLink {
+	margin: 1rem;
+	padding: 1rem 2rem;
+	border-radius: 1rem;
+	border: 2px solid var(--foreground);
+}
+
+.manageMenuLink svg {
+	margin-right: 1rem;
+}

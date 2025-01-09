@@ -13,7 +13,7 @@ export const handleRegister = async ({
 			throw new Error('Passwords do not match')
 		}
 
-		const response = await axiosPublic.post('/register', {
+		const response = await axiosPublic.post('/user/register', {
 			user: {
 				password,
 				...rest,
@@ -34,7 +34,7 @@ export const handleRegister = async ({
 
 export const handleLogin = async (data: loginData) => {
 	try {
-		const response = await axiosPublic.post('/login', { user: data })
+		const response = await axiosPublic.post('/user/login', { user: data })
 
 		const { data: userData } = response
 		const accessToken = response.headers['authorization']
