@@ -1,7 +1,7 @@
 'use client'
 
-import { ProfileInfo } from '@/widgets/authentification'
 import { OrderContainer } from '@/widgets/items'
+import { ProfileInfo } from '@/widgets/user'
 import styles from './styles.module.css'
 
 export default function Profile() {

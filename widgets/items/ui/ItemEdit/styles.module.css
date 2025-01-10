@@ -1,0 +1,15 @@
+.itemEditSection {
+	display: flex;
+	justify-content: center;
+}
+
+.itemEditForm {
+	width: clamp(250px, 80%, 80%);
+}
+
+.itemEditInput input::-webkit-outer-spin-button,
+.itemEditInput input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	-moz-appearance: textfield;
+	margin: 0;
+}

@@ -5,6 +5,26 @@
 	border-radius: 1rem;
 	border: 2px solid var(--foreground);
 	margin: 1rem 0;
+	width: 100%;
+}
+
+.mutableInfoSection {
+	display: flex;
+	align-items: center;
+}
+
+.editLink {
+	padding: 0.75rem 1rem;
+	margin-left: 0.5rem;
+	border-radius: 0.5rem;
+	background-color: var(--foreground);
+	color: var(--background);
+}
+
+.editLink svg {
+	width: 1.5rem;
+	height: 1.5rem;
+	fill: var(--background);
 }
 
 .infoSection {

@@ -1,0 +1,9 @@
+.itemsContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.itemsList {
+	width: 100%;
+}

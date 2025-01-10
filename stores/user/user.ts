@@ -1,4 +1,4 @@
-import { IUser } from '@/widgets/authentification'
+import { IUser } from '@/widgets/user'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 

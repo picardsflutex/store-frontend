@@ -1,3 +1,9 @@
+import { UserContainer } from '@/widgets/user'
+
 export default function ManageUsers() {
-	return <main>Manage</main>
+	return (
+		<main>
+			<UserContainer />
+		</main>
+	)
 }

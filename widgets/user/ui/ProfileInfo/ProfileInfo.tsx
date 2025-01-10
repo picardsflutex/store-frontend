@@ -20,25 +20,26 @@ const ProfileInfo = () => {
 	const [isUpdate, setIsUpdate] = useState<boolean>(false)
 
 	const handleSubmit = async (prevState: SubmitState, formData: FormData) => {
-		if (isUpdate)
-			try {
-				const first_name = formData.get('first_name')?.toString() || ''
-				const last_name = formData.get('last_name')?.toString() || ''
+		try {
+			const first_name = formData.get('first_name')?.toString() || ''
+			const last_name = formData.get('last_name')?.toString() || ''
 
-				const { data } = await axiosPrivate.put('/user/update', {
-					user: { first_name, last_name },
-				})
-				setUser(data.data)
-				return { data, error: null }
-			} catch (error: any) {
-				return { ...prevState, error }
-			} finally {
-				setIsUpdate(!isUpdate)
-			}
+			const { data } = await axiosPrivate.put('/user/update', {
+				user: { first_name, last_name },
+			})
+			const user = data.data as IUser
+			setUser(user)
+			return { data: user, error: null }
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		} catch (error: any) {
+			return { ...prevState, error }
+		} finally {
+			setIsUpdate(!isUpdate)
+		}
 	}
 
-	const [state, submit, isPending] = useActionState(handleSubmit, {
-		data: null,
+	const [state, submit] = useActionState(handleSubmit, {
+		data: user,
 		error: null,
 	})
 
@@ -46,29 +47,29 @@ const ProfileInfo = () => {
 		<section className={styles.profileSection}>
 			<form action={submit} className={styles.form}>
 				<div className={styles.inputGroup}>
-					<label className={styles.label}>Ім&apos;я: </label>
+					<label className={styles.label}>First name: </label>
 					{!isUpdate ? (
-						<p className={styles.inputField}>{user?.first_name}</p>
+						<p className={styles.inputField}>{state.data?.first_name}</p>
 					) : (
 						<Input
 							id='first_name'
 							type='text'
 							name='first_name'
-							defaultValue={user?.first_name}
+							defaultValue={state.data?.first_name}
 							required
 						/>
 					)}
 				</div>
 				<div className={styles.inputGroup}>
-					<label className={styles.label}>Ім&apos;я: </label>
+					<label className={styles.label}>Last name: </label>
 					{!isUpdate ? (
-						<p className={styles.inputField}>{user?.last_name}</p>
+						<p className={styles.inputField}>{state.data?.last_name}</p>
 					) : (
 						<Input
 							id='last_name'
 							type='text'
 							name='last_name'
-							defaultValue={user?.last_name}
+							defaultValue={state.data?.last_name}
 							required
 						/>
 					)}

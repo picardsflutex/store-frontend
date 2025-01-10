@@ -1,0 +1,20 @@
+/* UserCard.module.css */
+.card {
+	border: 1px solid var(--foreground);
+	border-radius: 0.5rem;
+	padding: 1rem;
+	margin: 0.5rem;
+	width: clamp(250px, 30%, 400px);
+}
+
+.info {
+	color: var(--foreground);
+	margin: 0.5rem 0;
+}
+
+.link {
+	background-color: var(--foreground);
+	color: var(--background);
+	border-radius: 0.5rem;
+	padding: 0.5rem 1rem;
+}

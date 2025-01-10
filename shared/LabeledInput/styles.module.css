@@ -5,6 +5,7 @@
 
 .inputLabel {
 	position: absolute;
+	padding: 0 0.25rem;
 	top: 1.35rem;
 	left: 1rem;
 }

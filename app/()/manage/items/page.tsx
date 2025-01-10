@@ -1,3 +1,9 @@
+import { ItemsContainer } from '@/widgets/items'
+
 export default function ManageItems() {
-	return <main>Manage</main>
+	return (
+		<main>
+			<ItemsContainer isModeration={true} />
+		</main>
+	)
 }

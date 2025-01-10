@@ -1,0 +1,11 @@
+.pageChanger {
+	width: 120px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.pageChangerInfo {
+	padding: 0 0.5rem;
+	border-bottom: 2px solid var(--foreground);
+}

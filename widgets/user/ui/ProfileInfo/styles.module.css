@@ -6,6 +6,7 @@
 .form {
 	display: flex;
 	justify-content: space-between;
+	width: clamp(250px, 80%, 800px);
 }
 
 .inputGroup,
