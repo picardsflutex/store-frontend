@@ -4,7 +4,6 @@ import styles from './styles.module.css'
 
 const Input = ({
 	className,
-	inputSize = 'medium',
 	disabled,
 	children,
 	maxLength = 500,
@@ -15,7 +14,6 @@ const Input = ({
 			className={classNames(
 				className,
 				styles.DefaultInput,
-				inputSize,
 				disabled && 'disabled'
 			)}
 			maxLength={maxLength <= 500 ? maxLength : 500}
