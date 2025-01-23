@@ -5,6 +5,7 @@ import { ROUTES } from '@/routes/routes'
 import { Button } from '@/shared'
 import useUserStore from '@/stores/user/user'
 import { logout } from '@/widgets/user'
+import classNames from 'classnames'
 import Link from 'next/link'
 import { RiLogoutBoxRLine } from 'react-icons/ri'
 import { TiUser } from 'react-icons/ti'
@@ -30,14 +31,25 @@ export const NavMenu = () => {
 				))}
 			</div>
 			<div className={styles.navMenuPart}>
-				<Link className={styles.profileIcon} href='/profile'>
-					<TiUser />
-					{user?.first_name}
-				</Link>
+				{user?.id && (
+					<Link className={styles.profileIcon} href='/profile'>
+						<TiUser />
+						{user?.first_name}
+					</Link>
+				)}
 				<Cart />
-				<Button buttonStyle='subtle' onClick={handleLogout}>
-					<RiLogoutBoxRLine />
-				</Button>
+				{user?.id ? (
+					<Button buttonStyle='subtle' onClick={handleLogout}>
+						<RiLogoutBoxRLine />
+					</Button>
+				) : (
+					<Link
+						className={classNames(styles.loginLink, 'primary')}
+						href='/login'
+					>
+						Login
+					</Link>
+				)}
 			</div>
 		</nav>
 	)

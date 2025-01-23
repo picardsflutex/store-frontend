@@ -51,7 +51,7 @@ export default function Chekout() {
 			await axiosPrivate.post('/api/v1/orders', { items: [...cart] })
 
 			clearCart()
-			router.push('/orders')
+			router.push('/profile')
 		} catch (error) {
 			alert(error)
 		}

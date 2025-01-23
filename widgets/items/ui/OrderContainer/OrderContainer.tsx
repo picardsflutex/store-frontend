@@ -22,7 +22,7 @@ export const OrderContainer = () => {
 		const fetchOrders = async () => {
 			try {
 				const response = await axiosPrivate.get('/api/v1/orders')
-				const ordersData = response.data
+				const ordersData = response.data.reverse()
 				setOrders(ordersData)
 
 				const itemIds = new Set<number>()
@@ -54,9 +54,9 @@ export const OrderContainer = () => {
 		<section className={styles.ordersSection}>
 			<h2 className={styles.orderTitle}>Ваші замовлення</h2>
 			{loadingOrders ? (
-				<p>Завантаження замовлень...</p>
+				<p className={styles.orderInfo}>Завантаження замовлень...</p>
 			) : orders.length === 0 ? (
-				<p>Замовлення відсутні.</p>
+				<p className={styles.orderInfo}>Замовлення відсутні.</p>
 			) : (
 				<ul className={styles.ordersList}>
 					{orders.map(order => (

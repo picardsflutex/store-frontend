@@ -1,6 +1,7 @@
 import { axiosPublic } from '@/axios'
 import { Button, Counter } from '@/shared'
 import useCartStore from '@/stores/cart/cart'
+import useUserStore from '@/stores/user/user'
 import { Dialog } from '@headlessui/react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -16,6 +17,7 @@ export interface ItemDetails {
 }
 
 export const Cart = () => {
+	const { user } = useUserStore()
 	const { cart, clearCart } = useCartStore(state => state)
 	const [isOpen, setIsOpen] = useState(false)
 	const [itemsDetails, setItemsDetails] = useState<Record<number, ItemDetails>>(
@@ -92,9 +94,23 @@ export const Cart = () => {
 						<Button onClick={clearCart}>
 							<FaRegTrashCan /> Видалити все
 						</Button>
-						<Link className={styles.orderlink} href='/checkout'>
-							Перейти до оформлення
-						</Link>
+						{user?.id ? (
+							<Link
+								className={styles.orderlink}
+								href='/checkout'
+								onClick={closeModal}
+							>
+								Перейти до оформлення
+							</Link>
+						) : (
+							<Link
+								className={styles.orderlink}
+								href='/login'
+								onClick={closeModal}
+							>
+								Авторизуватись
+							</Link>
+						)}
 					</div>
 					<Button
 						className={styles.closeButton}
